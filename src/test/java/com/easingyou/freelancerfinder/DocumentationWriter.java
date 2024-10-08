@@ -13,7 +13,6 @@ class DocumentationWriter {
 
      for each module, e.g. address, documentation:
      - module-bidding.puml: plantUML of bidding and all the direct dependencies
-     - module-bidding-simple.puml: plantUML of bidding and all its direct dependencies without the relations between those dependencies (only to bidding)
      - module-bidding.adoc: asciidoc of bidding module
 
      depends on means: having a type dependency
