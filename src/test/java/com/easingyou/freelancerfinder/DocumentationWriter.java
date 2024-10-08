@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.modulith.core.ApplicationModules;
 import org.springframework.modulith.docs.Documenter;
 
-public class DocumentationWriter {
+class DocumentationWriter {
 
 	/*
      Running this test generates documentation and stores it in target/spring-modulith-docs . You can find there:
@@ -24,20 +24,12 @@ public class DocumentationWriter {
 	@Disabled("Enable (or just run in intellij) this test to generate documentation. We don't do that by default.")
 	void writeDocumentationSnippets() {
 		final ApplicationModules modules = ApplicationModules.of(FreelancerFinderApp.class);
-		final Documenter documenter = new Documenter(modules);
+		new Documenter(modules).writeDocumentation();
 
-		modules.forEach(applicationModule -> {
-			documenter.writeModuleAsPlantUml(
-					applicationModule,
-					Documenter.DiagramOptions.defaults()
-							.withTargetOnly(am -> !am.equals(applicationModule))
-							.withTargetFileName("module-%s-simple.puml"));
-		});
-
-		documenter.writeDocumentation();
 		// writeDocumentation does all the 3 below in 1 call:
 		//                .writeModulesAsPlantUml()
 		//                .writeIndividualModulesAsPlantUml()
-		//                .writeModuleCanvases();
+		//                .writeModuleCanvases()
+		//								.writeAggregatingDocument();
 	}
 }
