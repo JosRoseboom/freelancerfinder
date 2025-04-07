@@ -7,6 +7,8 @@ class ModuleVerificationsTest {
 
 	@Test
 	void testModules() {
-		ApplicationModules.of(FreelancerFinderApp.class).verify();
+		final ApplicationModules applicationModules = ApplicationModules.of(FreelancerFinderApp.class);
+		System.out.println(applicationModules);
+		applicationModules.verify();
 	}
 }
